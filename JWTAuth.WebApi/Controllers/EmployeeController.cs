@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JWTAuth.WebApi.Controllers
 {
+
+  //  https://www.c-sharpcorner.com/article/uploading-files-with-react-js-and-net/
     [Authorize]
     [Route("api/employee")]
     [ApiController]
@@ -24,6 +26,22 @@ namespace JWTAuth.WebApi.Controllers
         {
             return await Task.FromResult(_IEmployee.GetEmployeeDetails());
         }
+
+        //[HttpPost("ImportFile")]
+        //public async Task<IActionResult> ImportFile([FromForm] IFormFile file)
+        //{
+        //    int id = 1;
+        //    var employees = await Task.FromResult(_IEmployee.GetEmployeeDetails(id));
+        //    string name = file.FileName;
+        //    string extension = Path.GetExtension(file.FileName);
+        //    //read the file
+        //    using (var memoryStream = new MemoryStream())
+        //    {
+        //        file.CopyTo(memoryStream);
+        //    }
+        //    return employees;
+        //    //do something with the file here
+        //}
 
         // GET api/employee/5
         [HttpGet("{id}")]
@@ -79,6 +97,8 @@ namespace JWTAuth.WebApi.Controllers
             var employee = _IEmployee.DeleteEmployee(id);
             return await Task.FromResult(employee);
         }
+
+     
 
         private bool EmployeeExists(int id)
         {
